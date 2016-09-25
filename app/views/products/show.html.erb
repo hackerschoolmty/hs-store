@@ -1,19 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @product.name %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong>Price</strong></dt>
+  <dd><%= number_to_currency(@product.price) %></dd>
+  <dt><strong>Description</strong></dt>
+  <dd><%= @product.description %></dd>
+</dl>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+<%= link_to "Back", products_path, class: 'btn btn-default'  %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if user_signed_in? %>
+  <%= link_to "Edit", edit_product_path(@product), class: 'btn btn-default' %>
+  <%= link_to "Delete", product_path(@product), method: 'delete', data: { :confirm => "Are you sure?" }, class: 'btn btn-danger' %>
+<% end %>
