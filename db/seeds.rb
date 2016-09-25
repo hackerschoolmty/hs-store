@@ -9,4 +9,4 @@ Product.create(name: "Cool keyboard", price: 500.0)
 
 puts "Creating basic user.."
 
-User.create(name: "Cosme Fulanito")
+User.create(name: "Cosme Fulanito", email: "cosme@hackerschool.com", password: "password", password_confirmation: "password")
