@@ -1,0 +1,4 @@
+<div id="picture_<%= picture.id %>" class="col-md-3">
+  <%= image_tag picture.image_url, class: "img-responsive" %>
+  <%= link_to "Eliminar", picture_path(picture), method: :delete, confirm: "¿Estás seguro?", remote: true %>
+</div>
