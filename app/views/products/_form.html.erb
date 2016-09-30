@@ -30,6 +30,13 @@
     <%=f.error_span(:price) %>
   </div>
   <div class="form-group">
+    <%= f.label :parent_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.select :parent_id, @products.collect{|product|[product.name, product.id]}, {include_blank:true},:class => 'form-control' %>
+    </div>
+    <%=f.error_span(:parent_id) %>
+  </div>
+  <div class="form-group">
     <%= f.label :description, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :description, :class => 'form-control' %>

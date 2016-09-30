@@ -1,11 +1,16 @@
 class ProductsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :archive]
+  before_action :set_products, only: [:new, :edit]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if current_user
+      @products = Product.all
+    else
+      @products = Product.active
+    end
   end
 
   # GET /products/1
@@ -62,6 +67,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def archive
+    if @product.status
+      @product.status=false
+    else
+      @product.status =true
+    end
+    @product.save
+    redirect_to products_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -70,6 +85,12 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :description)
+      params.require(:product).permit(:name, :price, :parent_id, :description)
     end
+
+    def set_products
+      @products=Product.all
+    end
+
+
 end

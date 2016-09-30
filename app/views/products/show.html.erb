@@ -3,9 +3,11 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong>Price</strong></dt>
+  <dt><strong>Price:</strong></dt>
   <dd><%= number_to_currency(@product.price) %></dd>
-  <dt><strong>Description</strong></dt>
+  <dt><strong>Parent:</strong></dt>
+  <dd><%= @product.parent.name %></dd>
+  <dt><strong>Description:</strong></dt>
   <dd><%= @product.description %></dd>
 </dl>
 
@@ -18,18 +20,5 @@
 
 <hr>
 
-<h3>Pictures</h3>
 
-<%= form_for Picture.new, remote: true do |f| %>
-  <%= f.hidden_field :picturable_type, value: "Product" %>
-  <%= f.hidden_field :picturable_id, value: @product.id %>
-  <%= f.file_field :image %>
-  <%= f.submit "Save" %>
-<% end %>
-
-<div id="pictures_section" class="row">
-  <% @product.pictures.each do |picture| %>
-    <%= render 'picture_detail', picture: picture %>
-
-  <% end %>
-</div>
+<%= render 'pictures/pictures_show', picturable_type:"Product", picturable_id: @product_id, pictures: @product.pictures%>
