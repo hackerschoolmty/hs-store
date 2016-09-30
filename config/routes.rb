@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :line_items
   resources :orders
   resources :users
-  resources :products
+  resources :products do
+    put :archive, on: :member
+  end
   resources :pictures
   root "products#index"
   # The priority is based upon order of creation: first created -> highest priority.

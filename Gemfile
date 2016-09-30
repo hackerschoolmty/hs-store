@@ -27,6 +27,7 @@ gem 'devise'
 gem "twitter-bootstrap-rails"
 gem 'remotipart', '~> 1.2'
 gem 'carrierwave'
+gem "pry"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

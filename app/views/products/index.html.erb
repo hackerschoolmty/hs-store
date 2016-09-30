@@ -13,6 +13,7 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th>Status</th>
       <th>Price</th>
       <th></th>
     </tr>
@@ -22,16 +23,24 @@
       <tr>
         <td><%= link_to product.id, product_path(product) %></td>
         <td><%= product.name %></td>
+        <td><%= product_status_label(product) %></td>
         <td><%= number_to_currency(product.price, precision: 2) %></td>
         <td>
           <% if user_signed_in? %>
+            <% if product.active?  %>
+              <%= link_to "Archive", archive_product_path(product), method: :put, class: "btn btn-xs btn-warning" %>
+            <% else %>
+              <%= link_to "Activate", archive_product_path(product), method: :put, class: "btn btn-xs btn-info" %>
+            <% end %>
             <%= link_to "Edit", edit_product_path(product), class: 'btn btn-default btn-xs' %>
             <%= link_to "Eliminar",
               product_path(product),
               method: :delete,
               data: { confirm:  "Are you sure?"},
               class: 'btn btn-xs btn-danger' %>
+
           <% end %>
+
         </td>
       </tr>
     <% end %>
