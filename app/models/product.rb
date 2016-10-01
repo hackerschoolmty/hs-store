@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   validates :name, :price, presence: true
+  validates :name, uniqueness: true
   
   belongs_to :parent, class_name: "Product"
   has_many :line_items
