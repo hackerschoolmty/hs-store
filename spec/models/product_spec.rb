@@ -17,9 +17,10 @@ describe Product do
   end
 
   it "should be invalid with a duplicated name" do
-    create(:product)
-    product = build(:product)
+    create(:product, name: "cats")
+    product = build(:product, name: "cats")
     expect(product).to_not be_valid
     expect(product).to have(1).error_on(:name)
+    #comment = create(:comment)
   end
 end
