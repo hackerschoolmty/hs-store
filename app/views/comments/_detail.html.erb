@@ -1,10 +1,12 @@
-<blockquote>
-  <p><%= comment.description %></p>
-  <small>
-    <cite>
-      <%= comment.user.name %>
-      <%= time_ago_in_words(comment.created_at) + " ago" %>
-    </cite>
-  </small>
-  <%= link_to "Eliminar", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
-</blockquote>
+<div id="comment_<%= comment.id %>">
+  <blockquote>
+    <p><%= comment.description %></p>
+    <small>
+      <cite>
+        <%= comment.user.name %>
+        <%= time_ago_in_words(comment.created_at) + " ago" %>
+      </cite>
+    </small>
+    <%= link_to "Eliminar", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger", remote: true %>
+  </blockquote>
+</div>
