@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comments_params)
     @comment.save
-    NotificationJob.perform_later(@comment.id)
+    NotificationJob.set(wait: 1.minute).perform_later(@comment.id)
   end
 
   def destroy
