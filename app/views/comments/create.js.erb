@@ -1,0 +1,3 @@
+console.log("creando...")
+$("#comments_section").prepend("<%= escape_javascript(render 'detail', comment: @comment) %>")
+$("#comment_description").val("")

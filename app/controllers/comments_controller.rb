@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comments_params)
     @comment.save
-    redirect_to product_path(@comment.product)
   end
 
   def destroy

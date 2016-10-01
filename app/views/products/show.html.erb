@@ -30,7 +30,7 @@
 
 <h3>Comments</h3>
 
-<%= form_for Comment.new do |f| %>
+<%= form_for Comment.new, remote: true do |f| %>
   <%= f.hidden_field :product_id, value: @product.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.text_area :description, cols: 100, rows: 5, class: "form-control" %>
@@ -41,17 +41,9 @@
 <br/>
 <br/>
 
-<div>
+<div id="comments_section">
   <% @product.comments.each do |comment| %>
-    <blockquote>
-      <p><%= comment.description %></p>
-      <small>
-        <cite>
-          <%= comment.user.name %>
-          <%= time_ago_in_words(comment.created_at) + " ago" %>
-        </cite>
-      </small>
-      <%= link_to "Eliminar", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
-    </blockquote>
+    <%= render 'comments/detail', comment: comment %>
+    
   <% end %>
 </div>
