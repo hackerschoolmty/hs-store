@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   resources :line_items
   resources :orders
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
     put :archive, on: :member
   end
   resources :pictures
+  resources :comments
   root "products#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
