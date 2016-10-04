@@ -27,7 +27,7 @@
     <div class="col-lg-10">
       <%= f.text_field :price, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:price) %>
+    <%= f.error_span(:price) %>
   </div>
 
   <div class="form-group">
@@ -41,9 +41,9 @@
   <div class="form-group">
     <%= f.label :parent_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.select :parent_id, products_combo, :class => 'form-control' %>
+      <%= f.select :parent_id, products_combo, { include_blank: true }, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:parent_id) %>
+    <%= f.error_span(:parent_id) %>
   </div>
 
   <div class="form-group">

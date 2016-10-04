@@ -131,6 +131,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -258,6 +260,7 @@ DEPENDENCIES
   jquery-rails
   pg (~> 0.15)
   pry
+  quiet_assets
   rails (= 4.2.6)
   remotipart (~> 1.2)
   rspec-collection_matchers
@@ -273,4 +276,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
