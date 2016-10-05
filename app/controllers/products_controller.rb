@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def public
+    @products = Product.includes(:pictures).all.page(params[:page]).per(200)
   end
 
   # GET /products/1
