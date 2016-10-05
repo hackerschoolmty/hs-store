@@ -1,0 +1,10 @@
+es:
+  activerecord:
+    models:
+      product: Producto
+    attributes:
+      product:
+        name: Nombre
+        price: Precio
+        description: Descripción
+        parent_id: Padre

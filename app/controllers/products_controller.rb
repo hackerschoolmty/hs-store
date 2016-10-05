@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = if current_user
-      Product.order(:created_at)
-    else
-      Product.active.order(:created_at)
+    @products = Product.order(:created_at)
+    unless user_signed_in?
+      @products = @products.active
     end
+    @products = @products.page(params[:page]).per(3)
   end
 
   # GET /products/1
