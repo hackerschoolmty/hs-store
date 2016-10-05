@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :users
   resources :products do
+    get :public, on: :collection
     put :archive, on: :member
   end
   resources :pictures

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:index, :show]
+  skip_before_filter :authenticate_user!, only: [:index, :show, :public]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :archive]
 
   # GET /products
@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
       @products = @products.active
     end
     @products = @products.page(params[:page]).per(3)
+  end
+
+  def public
   end
 
   # GET /products/1
